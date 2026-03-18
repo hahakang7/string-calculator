@@ -10,7 +10,23 @@ import java.util.List;
 public class StringCalculator {
 
     public double calculate(String input) {
-        throw new UnsupportedOperationException("구현 필요");
+
+        //0인경우
+        if(input.equals("")) {
+            return 0;
+        }
+        //null인 경우
+        if(input.equals(null)) {
+            return 0;
+        }
+
+
+        String[] split = input.split("");
+        for (String s : split) {
+            System.out.println(s);
+        }
+
+        return 0;
     }
 
     public List<String> getHistory() {
