@@ -1,5 +1,7 @@
 package calculator;
 
+import entity.Expression;
+
 import java.util.List;
 
 /**
@@ -9,27 +11,20 @@ import java.util.List;
  */
 public class StringCalculator {
 
+    CalculationHistory history = new CalculationHistory();
+    InputParser parser = new InputParser();
+    Operate operate = new Operate();
+
     public double calculate(String input) {
 
-        //0인경우
-        if(input.equals("")) {
-            return 0;
-        }
-        //null인 경우
-        if(input.equals(null)) {
-            return 0;
-        }
+        double result = operate.Operate(parser.parse(input));
 
-
-        String[] split = input.split("");
-        for (String s : split) {
-            System.out.println(s);
-        }
-
-        return 0;
+        history.save(input, result);
+        return result;
     }
 
     public List<String> getHistory() {
-        throw new UnsupportedOperationException("구현 필요");
+        List<String> allReverse = history.findAllReverse();
+        return allReverse;
     }
 }
